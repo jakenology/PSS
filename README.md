@@ -1,6 +1,5 @@
 # SafeSearch for Pi-hole
-![Pi-hole Logo](https://i0.wp.com/pi-hole.net/wp-content/uploads/2017/06/Vortex-r.png?resize=100%2C100&ssl=1)
-
+![Pi-hole Logo](https://i0.wp.com/pi-hole.net/wp-content/uploads/2017/06/Vortex-r.png?resize=100%2C100&ssl=1) + <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/2000px-Python-logo-notext.svg.png" alt="Python Logo" width="100">
 # Supported Search Engines
 <img src="https://www.festisite.com/static/partylogo/img/logos/google.png" alt="Google Logo" width="225" height="86">
 <img src="https://dwglogo.com/wp-content/uploads/2016/01/DuckDuckGo_logo_004.svg" alt="DuckDuckGo Logo" width="275" height="154.75">
