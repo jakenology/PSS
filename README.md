@@ -7,6 +7,7 @@
 
 All trademarks remain with their respective copyright holders as listed below:
 - Pi-hole LLC
+- Python Software Foundation
 - Google LLC
 - DuckDuckGo, Inc.
 - Microsoft, Inc.
