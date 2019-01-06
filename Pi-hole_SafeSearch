@@ -5,7 +5,7 @@ import urllib2
 import os
 
 ## Important Variables
-version = "1.0.2"
+version = "1.0.1"
 current_version = ""
 
 class bcolors:
@@ -60,7 +60,7 @@ def updateCheck():
             if "#" in line:
                 pass
             else:
-                current_version = (line.split("=")[-1]).strip('\"')
+                current_version = ((line.split("=")[-1]).strip()).strip('\"')
                 break
     if version == current_version:
         messenger("Up to date, version " + current_version)
