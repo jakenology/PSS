@@ -4,7 +4,7 @@ import urllib
 import os
 
 ## Important Variables
-version = "1.0"
+version="1.0"
 
 class bcolors:
     OKBLUE = '\033[94m'
