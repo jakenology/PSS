@@ -5,6 +5,7 @@ import os
 
 ## Important Variables
 version="1.0"
+# Dummy text: version, version, version
 
 class bcolors:
     OKBLUE = '\033[94m'
