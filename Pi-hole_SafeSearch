@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 import distutils.spawn
 import urllib
+import urllib2
 import os
 
 ## Important Variables
-version="1.0"
-# Dummy text: version, version, version
+version = "1.0"
+current_version = ""
 
 class bcolors:
     OKBLUE = '\033[94m'
@@ -43,8 +44,29 @@ def messenger(msg,info=False,err=False):
         char = bcolors.CHECKMARK
     print start+'['+char+']',msg,end
 
+def internet_on():
+    try:
+        urllib2.urlopen('http://216.58.192.142', timeout=1)
+        return True
+    except urllib2.URLError as err:
+        return False
+
 def updateCheck():
-    
+    url = "https://raw.githubusercontent.com/jaykepeters/Pi-hole_SafeSearch/master/Pi-hole_SafeSearch"
+    content = urllib.urlopen(url)
+    raw_text = (content.read().splitlines())
+    for line in raw_text:
+        if "version" in line:
+            if "#" in line:
+                pass
+            else:
+                current_version = (line.split("=")[-1]).strip('\"')
+                break
+    if version == current_version:
+        messenger("Up to date, version " + current_version)
+    else:
+        messenger(("Not up to date with version " + current_version),err=True)
+
 def runCheck():
     # Check for required commands
     for cmd in requiredCommands:
@@ -83,14 +105,13 @@ def createCNAME(source, target):
     return string
 
 def main():
-    runCheck()
-    getSupportedDomains()
-
-    demo = createCNAME(("google.com,www.google.com"),"forcesafesearch.google.com")
-    print(demo)
-
-    demo = createHostRecord("myplanefinder.net", "10.1.11.17")
-    print(demo)
+    if not internet_on():
+        messenger("NO INTERNET CONNECTION",err=True)
+    else:
+        messenger("Connected to the internet")
+        updateCheck()
+        runCheck()
+    #getSupportedDomains()
 
 ## Start the program
 if __name__ == "__main__":
