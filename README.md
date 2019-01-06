@@ -6,7 +6,7 @@
 <img src="https://dwglogo.com/wp-content/uploads/2016/01/DuckDuckGo_logo_004.svg" alt="DuckDuckGo Logo" width="275" height="154.75">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Bing_logo.svg/2000px-Bing_logo.svg.png" alt="Bing Logo" width="200" height="89.2">
 
-All trademarks remain with their respective copyright holders as listed below:
+All trademarks and logos remain with their respective copyright holders as listed below:
 - Pi-hole LLC
 - Python Software Foundation
 - Google LLC
