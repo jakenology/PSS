@@ -5,7 +5,7 @@ import urllib2
 import os
 
 ## Important Variables
-version = "1.0.1"
+version = "1.0"
 current_version = ""
 
 class bcolors:
@@ -81,6 +81,9 @@ def runCheck():
         else:
             messenger(("Found file: " + file))
 
+def lookupHosts():
+    pass
+
 def getSupportedDomains():
     messenger("Downloading TLD List from Google",info=True)
     supported_doms = urllib.urlopen("https://www.google.com/supported_domains")
@@ -94,7 +97,7 @@ def getSupportedDomains():
         # Create the CNAME record
         target = "forcesafesearch.google.com"
         cname = createCNAME((dom+','+www),target)
-        print(cname)
+        cnames.append(cname)
 
 def createHostRecord(host, ip):
     string = 'host-record='+host+','+ip
@@ -104,6 +107,10 @@ def createCNAME(source, target):
     string = 'cname='+source+','+target
     return string
 
+def generateFile():
+    getSupportedDomains()
+    print(cnames)
+
 def main():
     if not internet_on():
         messenger("NO INTERNET CONNECTION",err=True)
@@ -111,6 +118,7 @@ def main():
         messenger("Connected to the internet")
         updateCheck()
         runCheck()
+        generateFile()
     #getSupportedDomains()
 
 ## Start the program
