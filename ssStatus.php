@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SafeSearch Status</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
-    <style>
-        body {
-            margin: 50px;
-            font-family: 'Arial';
-        }
-        .header {
-            text-align: center;
-            font-family: 'Londrina Solid', cursive;
-        }
-        .enabled {color: lime;}
-        .disabled {color: red;}
-        .error {color: hotpink;}
-        .null {color: hotpink;}
-    </style>
-</head>
-<body>
-    <h1 class="header">SafeSearch Status</h1>
 <?php
 // V.A.F.E
 $conf = '/etc/dnsmasq.d/05-restrict.conf';
@@ -93,6 +69,44 @@ function getStats($provider) {
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeSearch Status</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
+    <style>
+        body {
+            margin: 50px;
+            background-color: gray;
+            font-family: 'Arial';
+            color: white;
+        }
+        .header {
+            text-align: center;
+            font-family: 'Londrina Solid', cursive;
+        }
+        .header_img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 150px;
+        }
+        .enabled {color: lime;}
+        .disabled {color: red;}
+        .error {color: hotpink;}
+        .null {color: hotpink;}
+        .warning {
+            text-transform: upper;
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="header">SafeSearch Status</h1>
+    <img src="http://www.abccarolinas.org/portals/40/Images/Logos/Safety%20First.jpg" alt="Paris" class="header_img">
+
     <p>Bing: <?php getStatus('Bing');?></p>
     <p>DuckDuckGo: <?php getStatus('DuckDuckGo');?></p>
     <p>Google: <?php getStatus('Google');?></p>
@@ -100,6 +114,7 @@ function getStats($provider) {
     <p>YouTube: <?php getStatus('YouTube');?></p>
 
     <h1 class="header">Stats</h1>
+    <h3 class="warning">Note: Counts are reset at 12:00 AM every day.</h3>
         <p><strong>Bing</strong> Safe Requests: <?php getStats('Bing');?></p>
         <p><strong>DuckDuckGo</strong> Safe Requests: <?php getStats('DuckDuckGo');?></p>
         <p><strong>Google</strong> Safe Requests: <?php getStats('Google');?></p>
