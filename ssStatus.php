@@ -115,10 +115,10 @@ function getStats($provider) {
 
     <h1 class="header">Stats</h1>
     <h3 class="warning">Note: Counts are reset at 12:00 AM every day.</h3>
-        <p><strong>Bing</strong> Safe Requests: <?php getStats('Bing');?></p>
-        <p><strong>DuckDuckGo</strong> Safe Requests: <?php getStats('DuckDuckGo');?></p>
-        <p><strong>Google</strong> Safe Requests: <?php getStats('Google');?></p>
-        <p><strong>Pixabay</strong> Safe Requests: <?php getStats('Pixabay');?></p>
-        <p><strong>YouTube</strong> Safe Requests: <?php getStats('YouTube');?></p>
+    <p><strong>Bing</strong> Safe Requests: <?php getStats('Bing');?></p>
+    <p><strong>DuckDuckGo</strong> Safe Requests: <?php getStats('DuckDuckGo');?></p>
+    <p><strong>Google</strong> Safe Requests: <?php getStats('Google');?></p>
+    <p><strong>Pixabay</strong> Safe Requests: <?php getStats('Pixabay');?></p>
+    <p><strong>YouTube</strong> Safe Requests: <?php getStats('YouTube');?></p>
 </body>
 </html>
