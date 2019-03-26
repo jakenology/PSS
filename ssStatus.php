@@ -143,7 +143,7 @@ function getStats($provider) {
                     </a>
                 </td>
                 <td><?php getStatus('Google');?></td> 
-                <td class="num"> ?php getStats('Google');?></td>
+                <td class="num"><?php getStats('Google');?></td>
             </tr>
             <tr>
                 <td>
