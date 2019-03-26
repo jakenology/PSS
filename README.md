@@ -12,3 +12,13 @@ All trademarks and logos remain with their respective copyright holders as liste
 - Google LLC
 - DuckDuckGo, Inc.
 - Microsoft, Inc.
+
+# API Draft
+- GET 
+  - /ssStatus.php/?/getStatus
+  - /ssStatus.php/?/getStatus/{provider}
+  - /ssStatus.php/?/getStatistics
+  - /ssStatus.php/?/getStatistics/{provider}
+- POST
+  - /ssStatus.php/?/enable/{provider}?auth={KEY}
+  - /ssStatus.php/?/disable/{provider}?auth={KEY}
