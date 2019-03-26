@@ -179,5 +179,12 @@ function getStats($provider) {
         </table>
         <h4 class="fm">Version 2.0 Beta</h2>
         <h4 class="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
+        <!-- Automatic Page Refresh (Will be replaced by AJAX) -->
+        <script>
+            function timedRefresh(timeoutPeriod) {
+	            setTimeout("location.reload(true);",timeoutPeriod);
+            }
+            window.onload = timedRefresh(2000);
+        </script>
     </body>
 </html>
