@@ -50,8 +50,10 @@ function getStats($provider) {
     if(array_key_exists($provider,$providers)) {
         $search = $providers[$provider];
 
-       // Fork the command instead
-        $count = shell_exec("fsearch $log $search");
+        // Fork the command instead
+        // Propietary... $count = shell_exec("fsearch $log $search");
+        //Recommended (≈2 seconds)
+        $count = shell_exec("grep -c $search $log");
 
         if($count !== 0) {
             echo number_format($count);
