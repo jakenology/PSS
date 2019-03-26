@@ -75,9 +75,16 @@ function getStats($provider) {
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <style>
+            body {
+                background: url(https://shrinky.link/P9TU);
+                background-size: 100%;
+            }
             #header {
                 text-align: center;
                 font-family: 'Londrina Solid', cursive;
+                color: white;
+                text-shadow: 3px 3px black;
+
             }
             table {
                 width: 85%;
@@ -90,9 +97,10 @@ function getStats($provider) {
             th, td {
                 padding: 10px;
             }
+            tr:nth-child(odd){background-color: lightgrey}
             tr:nth-child(even){background-color: #f2f2f2}
             th {
-                background-color: lightblue;
+                background-color: lightgrey;
                 font-family: 'Germania One', cursive;
                 font-size: 20px;
                 color: black;
@@ -117,7 +125,7 @@ function getStats($provider) {
                 text-align: right;
                 font-size: 25px;
             }
-            .fm {
+            #fm {
                 text-align: center;
                 font-family: 'Londrina Solid', cursive;
             }
@@ -129,7 +137,7 @@ function getStats($provider) {
             <tr>
                 <th>Provider</th>
                 <th>Status</th> 
-                <th>Safe Queries Today</th>
+                <th>Safe Queries</th>
             </tr>
             <tr>
                 <td>
@@ -155,7 +163,7 @@ function getStats($provider) {
                         <img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Google-256.png" width="50" alt="Google Logo">
                     </a>
                 </td>
-                <td align="center"><?php getStatus('Google');?></td> 
+                <td><?php getStatus('Google');?></td> 
                 <td class="num"><?php getStats('Google');?></td>
             </tr>
             <tr>
@@ -164,7 +172,7 @@ function getStats($provider) {
                         <img src="https://cdn.pixabay.com/photo/2017/01/17/14/41/pixabay-1987080_960_720.png" width="50" alt="Pixabay Logo">
                     </a>
                 </td>
-                <td align="center"><?php getStatus('Pixabay');?></td>
+                <td><?php getStatus('Pixabay');?></td>
                 <td class="num"><?php getStats('Pixabay');?></td>
             </tr>
             <tr>
@@ -173,17 +181,14 @@ function getStats($provider) {
                         <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-256.png" width="50" alt="YouTube Logo">
                     </a>
                 </td>
-                <td align="center"><?php getStatus('YouTube');?></td>
+                <td><?php getStatus('YouTube');?></td>
                 <td class="num"><?php getStats('YouTube');?></td>
             </tr>
         </table>
-        <h4 class="fm">Version 2.0 Beta</h2>
-        <h4 class="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
+        <h2 id="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
         <!-- Automatic Page Refresh (Will be replaced by AJAX) -->
         <script>
-            function timedRefresh(timeoutPeriod) {
-	            setTimeout("location.reload(true);",timeoutPeriod);
-            }
+            function timedRefresh(timeoutPeriod) {setTimeout("location.reload(true);",timeoutPeriod);}
             window.onload = timedRefresh(2000);
         </script>
     </body>
