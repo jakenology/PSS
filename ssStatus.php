@@ -50,14 +50,8 @@ function getStats($provider) {
     if(array_key_exists($provider,$providers)) {
         $search = $providers[$provider];
 
-        // Expanding on find_match()
-        $lines = file($log);
-
-        foreach($lines as $line) {
-            if(strpos($line, $search) !== false) {
-                $count++;
-            } 
-        }
+       // Fork the command instead
+        $count = shell_exec("fsearch $log $search");
 
         if($count !== 0) {
             echo number_format($count);
