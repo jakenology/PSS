@@ -32,9 +32,9 @@ function getStatus($provider) {
         // Continue 
         $host_record = $hr_prefix.$providers[$provider];
         if(find_match($conf, $host_record) !== null) {
-            echo '<span class="enabled">'.'Enabled'.'</span>';
+            echo '<span class="enabled fas fa-check fa-2x"></span>';
         } else {
-            echo '<span class="disabled">'.'Disabled'.'</span>';
+            echo '<span class="disabled fas fa-times-circle fa-2x"></span>';
         }
     } else {
         echo '<span class="error">'.'Unsupported Provider'.'</span>';
@@ -64,56 +64,105 @@ function getStats($provider) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SafeSearch Status</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
-    <style>
-        body {
-            margin: 50px;
-            background-color: gray;
-            font-family: 'Arial';
-            color: white;
-        }
-        .header {
-            text-align: center;
-            font-family: 'Londrina Solid', cursive;
-        }
-        .header_img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 150px;
-        }
-        .enabled {color: lime;}
-        .disabled {color: red;}
-        .error {color: hotpink;}
-        .null {color: hotpink;}
-        .warning {
-            text-transform: upper;
-            color: orange;
-        }
-    </style>
-</head>
-<body>
-    <h1 class="header">SafeSearch Status</h1>
-    <img src="http://www.abccarolinas.org/portals/40/Images/Logos/Safety%20First.jpg" alt="Paris" class="header_img">
-
-    <p>Bing: <?php getStatus('Bing');?></p>
-    <p>DuckDuckGo: <?php getStatus('DuckDuckGo');?></p>
-    <p>Google: <?php getStatus('Google');?></p>
-    <p>Pixabay: <?php getStatus('Pixabay');?></p>
-    <p>YouTube: <?php getStatus('YouTube');?></p>
-
-    <h1 class="header">Stats</h1>
-    <h3 class="warning">Note: Counts are reset at 12:00 AM every day.</h3>
-        <p><strong>Bing</strong> Safe Requests: <?php getStats('Bing');?></p>
-        <p><strong>DuckDuckGo</strong> Safe Requests: <?php getStats('DuckDuckGo');?></p>
-        <p><strong>Google</strong> Safe Requests: <?php getStats('Google');?></p>
-        <p><strong>Pixabay</strong> Safe Requests: <?php getStats('Pixabay');?></p>
-        <p><strong>YouTube</strong> Safe Requests: <?php getStats('YouTube');?></p>
-</body>
+<html lang="EN">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SafeSearch Status</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid|Germania+One|Josefin+Sans" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <style>
+            #header {
+                text-align: center;
+                font-family: 'Londrina Solid', cursive;
+            }
+            table {border-collapse: collapse;}
+            table.center {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            th, td {
+                padding: 10px;
+            }
+            tr:nth-child(even){background-color: #f2f2f2}
+            th {
+                background-color: lightblue;
+                font-family: 'Germania One', cursive;
+                color: black;
+            }
+            td {font-family: 'Josefin Sans', sans-serif;}
+            td img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .enabled {
+                color: lime;
+                text-shadow: 2px 2px 4px green;
+            }
+            .disabled {
+                color: red;
+                text-shadow: 2px 2px 4px pink;
+            }
+            .error {color: hotpink;}
+            .null {color: hotpink;}
+            td.num {text-align: right;}
+        </style>
+    </head>
+    <body>
+        <h1 id="header">SafeSearch Status</h1>
+        <table class="center">
+            <tr>
+                <th>Provider</th>
+                <th>Status</th> 
+                <th>Safe Queries Today</th>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://downdetector.com/status/bing">
+                        <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/125-bing-512.png" width="50" alt="Bing Logo">
+                    </a>
+                </td>
+                <td align="center"><?php getStatus('Bing');?></td> 
+                <td class="num"><?php getStats('Bing');?></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://downdetector.com/status/duckduckgo">
+                        <img src="https://cdn3.iconfinder.com/data/icons/social-media-special/256/duckduckgo-256.png" width="50" alt="DuckDuckGo Logo">
+                    </a>
+                </td>
+                <td align="center"><?php getStatus('DuckDuckGo');?></span></td>
+                <td class="num"><?php getStats('DuckDuckGo');?></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://downdetector.com/status/google">
+                        <img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Google-256.png" width="50" alt="Google Logo">
+                    </a>
+                </td>
+                <td><?php getStatus('Google');?></td> 
+                <td class="num"> ?php getStats('Google');?></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="http://currentlydown.com/pixabay.com">
+                        <img src="https://cdn.pixabay.com/photo/2017/01/17/14/41/pixabay-1987080_960_720.png" width="50" alt="Pixabay Logo">
+                    </a>
+                </td>
+                <td><?php getStatus('Pixabay');?></td>
+                <td class="num"><?php getStats('Pixabay');?></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="https://downdetector.com/status/youtube">
+                        <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-256.png" width="50" alt="YouTube Logo">
+                    </a>
+                </td>
+                <td><?php getStatus('YouTube');?></td>
+                <td class="num"><?php getStats('YouTube');?></td>
+            </tr>
+        </table>
+    </body>
 </html>
