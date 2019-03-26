@@ -163,7 +163,7 @@ function getStats($provider) {
                         <img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Google-256.png" width="50" alt="Google Logo">
                     </a>
                 </td>
-                <td><?php getStatus('Google');?></td> 
+                <td align="center"><?php getStatus('Google');?></td> 
                 <td class="num"><?php getStats('Google');?></td>
             </tr>
             <tr>
@@ -172,7 +172,7 @@ function getStats($provider) {
                         <img src="https://cdn.pixabay.com/photo/2017/01/17/14/41/pixabay-1987080_960_720.png" width="50" alt="Pixabay Logo">
                     </a>
                 </td>
-                <td><?php getStatus('Pixabay');?></td>
+                <td align="center"><?php getStatus('Pixabay');?></td>
                 <td class="num"><?php getStats('Pixabay');?></td>
             </tr>
             <tr>
@@ -181,14 +181,16 @@ function getStats($provider) {
                         <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-256.png" width="50" alt="YouTube Logo">
                     </a>
                 </td>
-                <td><?php getStatus('YouTube');?></td>
+                <td align="center"><?php getStatus('YouTube');?></td>
                 <td class="num"><?php getStats('YouTube');?></td>
             </tr>
         </table>
         <h2 id="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
         <!-- Automatic Page Refresh (Will be replaced by AJAX) -->
         <script>
-            function timedRefresh(timeoutPeriod) {setTimeout("location.reload(true);",timeoutPeriod);}
+            function timedRefresh(timeoutPeriod) {
+	            setTimeout("location.reload(true);",timeoutPeriod);
+            }
             window.onload = timedRefresh(2000);
         </script>
     </body>
