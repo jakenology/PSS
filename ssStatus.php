@@ -175,7 +175,7 @@ function getStats($provider) {
                 <td class="num"><?php getStats('YouTube');?></td>
             </tr>
         </table>
-        <h2 class="fm">Version 2.0 Beta</h2>
-        <h2 class="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
+        <h4 class="fm">Version 2.0 Beta</h2>
+        <h4 class="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
     </body>
 </html>
