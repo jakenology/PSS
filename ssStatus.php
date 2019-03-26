@@ -77,7 +77,10 @@ function getStats($provider) {
                 text-align: center;
                 font-family: 'Londrina Solid', cursive;
             }
-            table {border-collapse: collapse;}
+            table {
+                width: 85%;
+                border-collapse: collapse;
+            }
             table.center {
                 margin-left: auto;
                 margin-right: auto;
@@ -89,6 +92,7 @@ function getStats($provider) {
             th {
                 background-color: lightblue;
                 font-family: 'Germania One', cursive;
+                font-size: 20px;
                 color: black;
             }
             td {font-family: 'Josefin Sans', sans-serif;}
@@ -107,7 +111,14 @@ function getStats($provider) {
             }
             .error {color: hotpink;}
             .null {color: hotpink;}
-            td.num {text-align: right;}
+            td.num {
+                text-align: right;
+                font-size: 25px;
+            }
+            .fm {
+                text-align: center;
+                font-family: 'Londrina Solid', cursive;
+            }
         </style>
     </head>
     <body>
@@ -164,5 +175,7 @@ function getStats($provider) {
                 <td class="num"><?php getStats('YouTube');?></td>
             </tr>
         </table>
+        <h2 class="fm">Version 2.0 Beta</h2>
+        <h2 class="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
     </body>
 </html>
