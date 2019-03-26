@@ -20,5 +20,5 @@ All trademarks and logos remain with their respective copyright holders as liste
   - /ssStatus.php/?/getStatistics
   - /ssStatus.php/?/getStatistics/{provider}
 - POST
-  - /ssStatus.php/?/enable/{provider}?auth={KEY}
-  - /ssStatus.php/?/disable/{provider}?auth={KEY}
+  - /ssStatus.php/?/enable/{provider}&auth={KEY}
+  - /ssStatus.php/?/disable/{provider}&auth={KEY}
