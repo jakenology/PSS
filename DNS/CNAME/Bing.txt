@@ -1,0 +1,1 @@
+cname=bing.com,www.bing.com,strict.bing.com
