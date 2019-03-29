@@ -1,0 +1,1 @@
+cname=pixabay.com,safesearch.pixabay.com
