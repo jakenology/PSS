@@ -1,0 +1,5 @@
+cname=www.youtube.com,restrict.youtube.com
+cname=m.youtube.com,restrict.youtube.com
+cname=youtubei.googleapis.com,restrict.youtube.com
+cname=youtube.googleapis.com,restrict.youtube.com
+cname=www.youtube-nocookie.com,restrict.youtube.com
