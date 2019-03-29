@@ -1,0 +1,2 @@
+cname=duckduckgo.com,www.duckduckgo.com,start.duckduckgo.com,safe.duckduckgo.comm
+cname=duck.com,www.duck.com,safe.duckduckgo.com
