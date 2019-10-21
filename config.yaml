@@ -1,0 +1,23 @@
+google:
+  safe_site: forcesafesearch.google.com
+  redirect_fetch: https://www.google.com/supported_domains
+youtube:
+  safe_site: restrictmoderate.youtube.com
+  redirect_site:
+    - www.youtube.com
+    - m.youtube.com
+    - youtubeei.google.com
+    - youtube.googleapis.com
+    - www.youtube-nocookie.com
+bing:
+  safe_site: strict.bing.com
+  redirect_site:
+    - bing.com
+duck:
+  safe_site: safe.duckduckgo.com
+  redirect_site:
+    - duckduckgo.com
+    - duck.com
+    - start.duckduckgo.com
+    
+    
