@@ -10,10 +10,17 @@ Barry Quiel for fixing the Python version. This may be the future of PSS!
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Bing_logo.svg/2000px-Bing_logo.svg.png" alt="Bing Logo" width="200" height="89.2">
 
 # Installation
-To install Pi-hole SafeSearch (PSS), simply run the following command in your terminal below. It will set up and install everything for you. 
-```
-curl -sSL https://raw......
-```
+
+To install Pi-hole SafeSearch (PSS), simply run the following commands in your pi-hole terminal (log into pi with ssh; pi hole should be set up and running).
+
+1. Download the Pi-hole SafeSearch script:
+  `wget https://raw.githubusercontent.com/jaykepeters/PSS/master/Pi-hole_SafeSearch.sh`
+2. Move the script.
+  `sudo mv ./Pi-hole_SafeSearch.sh /usr/local/bin/`
+3. Make the script executable.
+  `sudo chmod a+x /usr/local/bin/Pi-hole_SafeSearch.sh`
+4. Enable Pi-hole SafeSearch:
+  `sudo Pi-hole_SafeSearch.sh -e`
 
 # Uninstallation
 If you wish to not enforce SafeSearch on your network anymore, please follow the steps below to completely uninstall PSS
