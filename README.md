@@ -1,3 +1,6 @@
+# WARNING
+There is a new beta version of Pi-hole which may interfere with the capabilites of this script. I will check into this and see if PSS will work! Until then, keep posted!
+
 # Special Thanks To
 
 Barry Quiel for fixing the Python version. This may be the future of PSS!
