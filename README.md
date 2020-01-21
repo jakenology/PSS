@@ -38,7 +38,7 @@ To install Pi-hole SafeSearch (PSS), simply run the following commands in your p
 
 # How to enable SafeSearch via the Pi-hole Admin Interface (v5.0+)
 1. Click on the "Custom DNS Tab"
-2. For every provider you want, type in their domain name and IP addresses. 
+2. For every provider you want, type in their domain name and SAFE IP addresses. 
 - Google is tricky because they have some 300 top-level domains, so users could bypass SafeSearch by going to google.ca in the us, etc. 
 - Bing, DuckDuckGo, and other providers should be fine. You want to make sure to add the www, as well as non-www variants for those search providers. Duck.com also redirects to duckduckgo.com right now as well...
 
