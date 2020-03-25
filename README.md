@@ -57,12 +57,11 @@ If you wish to not enforce SafeSearch on your network anymore, please follow the
   - All files will be deleted, including the script
   
 # API Draft
-
 - GET 
-  * /ssStatus.php/?/getStatus
-  * /ssStatus.php/?/getStatus/{provider}
-  * /ssStatus.php/?/getStatistics
-  * /ssStatus.php/?/getStatistics/{provider}
+  * /getStatus
+  * /getStatus/{provider}
+  * /getStatistics
+  * /getStatistics/{provider}
 - POST
-  * /ssStatus.php/?/enable/{provider}&auth={KEY}
-  * /ssStatus.php/?/disable/{provider}&auth={KEY}
+  * /enable/{provider}&auth={KEY}
+  * /disable/{provider}&auth={KEY}
