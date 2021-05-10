@@ -1,5 +1,5 @@
 host-record=forcesafesearch.google.com,216.239.38.120
-host-record=safe.duckduckgo.com,54.241.17.246
+host-record=safe.duckduckgo.com,52.142.126.100
 host-record=restrict.youtube.com,216.239.38.120
 host-record=restrictmoderate.youtube.com,216.239.38.119
 host-record=strict.bing.com,204.79.197.220
