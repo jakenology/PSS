@@ -200,6 +200,11 @@ generate() {
         do echo "$line"  >> "${file}"
     done
     
+    # Qwant
+    for line in "${qwantSS[@]}"
+        do echo "$line"  >> "${file}"
+    done
+    
     # Enable In Hosts and Pi-hole
     if [ "$ENABLE" == "True" ]; then
         logger all 'ENABLING SAFESEARCH FOR PI-HOLE'
