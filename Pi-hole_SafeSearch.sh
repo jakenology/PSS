@@ -24,6 +24,7 @@ hostRecords=(
     "safe.duckduckgo.com"
     "strict.bing.com"
     "safesearch.pixabay.com"
+    "safeapi.qwant.com"
 )
 yt-strictSS=(
    "cname=www.youtube.com,restrict.youtube.com"
@@ -56,6 +57,10 @@ duckduckgoSS=(
 )
 pixabaySS=(
     "cname=pixabay.com,safesearch.pixabay.com"
+)
+qwantSS=(
+    "cname=qwant.com,www.qwant.com,api.qwant.com,safeapi.qwant.com"
+    "cname=s1.qwant.com,s2.qwant.com,safeapi.qwant.com"
 )
 REGEX=(
     "(^|\.).+xxx$"
