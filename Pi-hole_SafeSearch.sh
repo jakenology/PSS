@@ -3,7 +3,6 @@
 # Created by Jayke Peters
 ## Define Global Variables
 ## ENABLE IN PIHOLE?
-YOUTUBE=False
 
 me=`basename "$0"`
 VERSION="1.6.1" # Fixed IP Address for Duckduckgo. Added SafeSearch for pixabay..., also fixed spelling error 
@@ -21,16 +20,24 @@ maxRuns=10
 # Host Records!!!
 hostRecords=(
     "forcesafesearch.google.com"
+    "restrictmoderate.youtube.com"
     "safe.duckduckgo.com"
     "strict.bing.com"
     "safesearch.pixabay.com"
 )
-ytSS=(
+yt-strictSS=(
    "cname=www.youtube.com,restrict.youtube.com"
    "cname=m.youtube.com,restrict.youtube.com"
    "cname=youtubei.googleapis.com,restrict.youtube.com"
    "cname=youtube.googleapis.com,restrict.youtube.com"
    "cname=www.youtube-nocookie.com,restrict.youtube.com"
+)
+yt-moderateSS=(
+   "cname=www.youtube.com,restrictmoderate.youtube.com"
+   "cname=m.youtube.com,restrictmoderate.youtube.com"
+   "cname=youtubei.googleapis.com,restrictmoderate.youtube.com"
+   "cname=youtube.googleapis.com,restrictmoderate.youtube.com"
+   "cname=www.youtube-nocookie.com,restrictmoderate.youtube.com"
 )
 bingSS=(
     "cname=bing.com,www.bing.com,strict.bing.com"
@@ -163,10 +170,14 @@ generate() {
     logger all ''$total' Domains'
 
     # YouTube SafeSearch 
-    if [ "$YOUTUBE" == "True" ]; then
-        for line in "${ytSS[@]}"
+    if [ "$YOUTUBE" == "Strict" ]; then
+        for line in "${yt-strictSS[@]}"
             do echo "$line"  >> "${file}"
         done
+    elif [ "$YOUTUBE" == "Moderate" ]; then
+        for line in "${yt-moderateSS[@]}"
+            do echo "$line"  >> "${file}"
+        done 
     fi
     
     # DuckDuckGo SafeSearch
@@ -235,8 +246,9 @@ help() {
     logger pass "$me version $version
     Usage: $me [options]
     Example: '$me --web'
-    
-    -e, --enable  Enable SafeSearch
+    Youtube Strict-Example: '$me --enable --yt-strict'
+    Youtube Moderate-Example: '$me --enable --yt-moderate'
+    -e, --enable  Enable SafeSearch            
     -d, --disable Disable SafeSearch
     -w, --web     For use with PHP Script
     -s, --silent  Execute Script Silently
@@ -275,6 +287,11 @@ else
         *v | *version) echo -e 'Current Version:\t' "$VERSION";;
         *h | *help    ) help;;
         *             ) help "$@";;
+    esac
+    case "${2}" in
+        *yt-s | *yt-strict   ) YOUTUBE=Strict;;
+        *yt-m | *yt-moderate ) YOUTUBE=Moderate;;
+        *                    ) YOUTUBE=False;;
     esac
 fi
 
