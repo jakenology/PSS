@@ -3,7 +3,6 @@
 # Created by Jayke Peters
 ## Define Global Variables
 ## ENABLE IN PIHOLE?
-YOUTUBE=False
 
 me=`basename "$0"`
 VERSION="1.6.1" # Fixed IP Address for Duckduckgo. Added SafeSearch for pixabay..., also fixed spelling error 
@@ -15,21 +14,31 @@ url="https://www.google.com/supported_domains"
 log="/var/log/${me}.log"
 maxRuns=10
 
+
+
 ## Arrays
 # Host Records!!!
 hostRecords=(
-    "host-record=forcesafesearch.google.com,216.239.38.120"
-    "host-record=safe.duckduckgo.com,54.241.17.246"
-    "host-record=restrict.youtube.com,216.239.38.120"
-    "host-record=strict.bing.com,204.79.197.220"
-    "host-record=safesearch.pixabay.com,176.9.158.70"
+    "forcesafesearch.google.com"
+    "restrictmoderate.youtube.com"
+    "safe.duckduckgo.com"
+    "strict.bing.com"
+    "safesearch.pixabay.com"
+    "safeapi.qwant.com"
 )
-ytSS=(
+yt-strictSS=(
    "cname=www.youtube.com,restrict.youtube.com"
    "cname=m.youtube.com,restrict.youtube.com"
    "cname=youtubei.googleapis.com,restrict.youtube.com"
    "cname=youtube.googleapis.com,restrict.youtube.com"
    "cname=www.youtube-nocookie.com,restrict.youtube.com"
+)
+yt-moderateSS=(
+   "cname=www.youtube.com,restrictmoderate.youtube.com"
+   "cname=m.youtube.com,restrictmoderate.youtube.com"
+   "cname=youtubei.googleapis.com,restrictmoderate.youtube.com"
+   "cname=youtube.googleapis.com,restrictmoderate.youtube.com"
+   "cname=www.youtube-nocookie.com,restrictmoderate.youtube.com"
 )
 bingSS=(
     "cname=bing.com,www.bing.com,strict.bing.com"
@@ -48,6 +57,10 @@ duckduckgoSS=(
 )
 pixabaySS=(
     "cname=pixabay.com,safesearch.pixabay.com"
+)
+qwantSS=(
+    "cname=qwant.com,www.qwant.com,api.qwant.com,safeapi.qwant.com"
+    "cname=s1.qwant.com,s2.qwant.com,safeapi.qwant.com"
 )
 REGEX=(
     "(^|\.).+xxx$"
@@ -133,15 +146,26 @@ generate() {
     echo "# $file generated on $(date '+%m/%d/%Y %H:%M') by $(hostname)" >> "${file}"
     echo "# Google SafeSearch Implementation" >> "${file}" 
 
-    # Add host records
-    for line in "${hostRecords[@]}"; do
-        echo "$line" >> "${file}"
+    # Add IP's and host records
+    for domain in "${hostRecords[@]}"; do
+        ips="$(nslookup $domain | grep "Address" | grep -oE "\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b" | sed -n 2p)"
+        if [ "$domain" = "forcesafesearch.google.com" ]; then
+            printf 'host-record=%s,restrict.youtube.com,%s,::ffff:%s \n' $domain $ips $ips >> "${file}"
+        else
+            printf 'host-record=%s,%s,::ffff:%s \n' $domain $ips $ips >> "${file}"
+        fi
     done
+    # Add host records
+    #for line in "${hostRecords[@]}"; do
+    #    echo "$line" >> "${file}"
+    #done
 
     # Generate list of domains
     for domain in "${domains[@]}"; do
         dom=$(echo $domain | cut -c 2-)
-        echo cname=$dom,"www""$domain",forcesafesearch.google.com >> "${file}"
+        #echo cname=$dom,"www""$domain",forcesafesearch.google.com >> "${file}"
+        #you only want the www variant of google because using google.com blocks android push notifications. 
+        echo cname="www""$domain",forcesafesearch.google.com >> "${file}"
     done
 
     # Get the number of domains
@@ -151,10 +175,14 @@ generate() {
     logger all ''$total' Domains'
 
     # YouTube SafeSearch 
-    if [ "$YOUTUBE" == "True" ]; then
-        for line in "${ytSS[@]}"
+    if [ "$YOUTUBE" == "Strict" ]; then
+        for line in "${yt-strictSS[@]}"
             do echo "$line"  >> "${file}"
         done
+    elif [ "$YOUTUBE" == "Moderate" ]; then
+        for line in "${yt-moderateSS[@]}"
+            do echo "$line"  >> "${file}"
+        done 
     fi
     
     # DuckDuckGo SafeSearch
@@ -169,6 +197,11 @@ generate() {
     
     # Pixabay
     for line in "${pixabaySS[@]}"
+        do echo "$line"  >> "${file}"
+    done
+    
+    # Qwant
+    for line in "${qwantSS[@]}"
         do echo "$line"  >> "${file}"
     done
     
@@ -223,8 +256,9 @@ help() {
     logger pass "$me version $version
     Usage: $me [options]
     Example: '$me --web'
-    
-    -e, --enable  Enable SafeSearch
+    Youtube Strict-Example: '$me --enable --yt-strict' or '$me --e --yt-s'
+    Youtube Moderate-Example: '$me --enable --yt-moderate' or '$me --e --yt-m'
+    -e, --enable  Enable SafeSearch            
     -d, --disable Disable SafeSearch
     -w, --web     For use with PHP Script
     -s, --silent  Execute Script Silently
@@ -251,6 +285,11 @@ disable() {
 
 }
 ## Check for user input
+case "${@}" in
+    *yt-s | *yt-strict   ) YOUTUBE=Strict;;
+    *yt-m | *yt-moderate ) YOUTUBE=Moderate;;
+    *                    ) YOUTUBE=False;;
+esac
 if [[ $# = 0 ]]; then
     main
 else
