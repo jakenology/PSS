@@ -256,8 +256,8 @@ help() {
     logger pass "$me version $version
     Usage: $me [options]
     Example: '$me --web'
-    Youtube Strict-Example: '$me --enable --yt-strict'
-    Youtube Moderate-Example: '$me --enable --yt-moderate'
+    Youtube Strict-Example: '$me --enable --yt-strict' or '$me --e --yt-s'
+    Youtube Moderate-Example: '$me --enable --yt-moderate' or '$me --e --yt-m'
     -e, --enable  Enable SafeSearch            
     -d, --disable Disable SafeSearch
     -w, --web     For use with PHP Script
@@ -285,6 +285,11 @@ disable() {
 
 }
 ## Check for user input
+case "${@}" in
+    *yt-s | *yt-strict   ) YOUTUBE=Strict;;
+    *yt-m | *yt-moderate ) YOUTUBE=Moderate;;
+    *                    ) YOUTUBE=False;;
+esac
 if [[ $# = 0 ]]; then
     main
 else
@@ -297,11 +302,6 @@ else
         *v | *version) echo -e 'Current Version:\t' "$VERSION";;
         *h | *help    ) help;;
         *             ) help "$@";;
-    esac
-    case "${2}" in
-        *yt-s | *yt-strict   ) YOUTUBE=Strict;;
-        *yt-m | *yt-moderate ) YOUTUBE=Moderate;;
-        *                    ) YOUTUBE=False;;
     esac
 fi
 
