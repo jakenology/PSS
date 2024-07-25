@@ -185,7 +185,6 @@ function getStats($provider) {
                 <td class="num"><?php getStats('YouTube');?></td>
             </tr>
         </table>
-        <h2 id="fm">Created by <a href="http://git.jayke.me">Jayke Peters</a></h2>
         <!-- Automatic Page Refresh (Will be replaced by AJAX) -->
         <script>
             function timedRefresh(timeoutPeriod) {
