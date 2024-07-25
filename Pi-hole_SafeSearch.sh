@@ -1,6 +1,6 @@
 #!/bin/bash
 # SafeSearch List Generator for Pi-hole 4.0 and above
-# Created by Jayke Peters
+# Created by JakeNology
 ## Define Global Variables
 ## ENABLE IN PIHOLE?
 YOUTUBE=False
