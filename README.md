@@ -21,7 +21,7 @@ To install Pi-hole SafeSearch (PSS), simply run the following commands in your p
 
 1. Download the Pi-hole SafeSearch script:
   
-    `wget https://raw.githubusercontent.com/jaykepeters/PSS/master/Pi-hole_SafeSearch.sh`
+    `wget https://raw.githubusercontent.com/jakenology/PSS/master/Pi-hole_SafeSearch.sh`
 
 2. Move the script.
   
